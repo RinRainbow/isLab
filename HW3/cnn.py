@@ -66,6 +66,12 @@ class ImgDataset(Dataset):
         else:
             return X
         
+batch_size = 128
+train_set = ImgDataset(train_x, train_y, train_transform)
+val_set = ImgDataset(val_x, val_y, test_transform)
+train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
+val_loader = DataLoader(val_set, batch_size=batch_size, shuffle=False)
+        
 class Classifier(nn.Module):
     def __init__(self):
         super(Classifier, self).__init__()
